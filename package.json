@@ -1,0 +1,26 @@
+{
+  "name": "awesome-blog",
+  "version": "0.0.1",
+  "description": "A blog powered by node.js and react... Its awesome!",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Steve720zhang/awesome-blog.git"
+  },
+  "keywords": [
+    "React",
+    "node",
+    "redux",
+    "blog",
+    "fullstack"
+  ],
+  "author": "Steve720zhang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Steve720zhang/awesome-blog/issues"
+  },
+  "homepage": "https://github.com/Steve720zhang/awesome-blog#readme"
+}
