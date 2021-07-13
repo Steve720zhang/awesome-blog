@@ -24,6 +24,9 @@ module.exports = {
       sm: '768px', //  768 - 24 - 24 = 720
       md: '1024px', // 1024 - 24 - 24 = 976
     },
+    inset: {
+      0: '0px',
+    },
     spacing: {
       px: '1px',
       1: '4px',
@@ -37,10 +40,16 @@ module.exports = {
       10: '40px',
       11: '44px',
       12: '48px',
+      'full-height': '100vh',
+      'full-width': '100vw',
     },
   },
   variants: {
     extend: {},
+  },
+  corePlugins: {
+    // ...
+    inset: true,
   },
   plugins: [],
 };

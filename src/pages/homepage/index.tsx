@@ -1,9 +1,32 @@
 import React from 'react';
+import clx from 'classnames';
+import styles from './index.css';
 
-export default function Page() {
+function Page() {
   return (
-    <div>
-      <div className="max-w-md m-auto bg-white h-12">123</div>
+    <div
+      className={clx(
+        'w-full-width overflow-hidden h-full-height relative',
+        styles.heroImage,
+      )}
+    >
+      <div
+        className={clx(
+          styles.bottomBg,
+          'flex items-end justify-center pb-2 absolute inset-x-0 bottom-0 w-full h-12',
+        )}
+      >
+        <a
+          className="text-white"
+          href="https://beian.miit.gov.cn"
+          target="_blank"
+        >
+          豫ICP备20011799号-1
+        </a>
+      </div>
     </div>
   );
 }
+Page.title = '家庭记录分享';
+
+export default Page;
