@@ -3,6 +3,9 @@ import clx from 'classnames';
 import styles from './index.css';
 
 function Page() {
+  // React.useEffect(() => {
+  //   console.log('env', process.env)
+  // })
   return (
     <div
       className={clx(
@@ -21,7 +24,7 @@ function Page() {
           href="https://beian.miit.gov.cn"
           target="_blank"
         >
-          豫ICP备20011799号-1
+          {'豫ICP备20011799号-1'}
         </a>
       </div>
       <div className="absolute top-3/4 left-0 right-0">
