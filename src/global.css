@@ -1,2 +1,5 @@
 @import '~antd/dist/antd.css';
 @import "./styles/tailwind.css";
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

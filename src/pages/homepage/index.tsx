@@ -24,9 +24,12 @@ function Page() {
           豫ICP备20011799号-1
         </a>
       </div>
-      <div className="w-0 h-0 absolute top-1/2 left-1/2 bottom-0">
-        <div className="w-auto h-auto border border-solid border-gray-gray5 rounded-1 -ml-1/2 mt-full ">
-          <div className="text-gray-gray2 opacity-1/2">小名叫棒棒</div>
+      <div className="absolute top-3/4 left-0 right-0">
+        <div className="border border-solid border-gray-gray5 rounded-1 block max-w-2/3 m-auto w-max px-6 py-2">
+          <p className="select-none">
+            <span className="text-gray-gray1 text-2xl">小名叫棒棒</span>
+            <span className="text-gray-gray3 text-2xl">的写字间</span>
+          </p>
         </div>
       </div>
     </div>
