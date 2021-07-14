@@ -6,6 +6,17 @@ module.exports = {
       sm: '768px',
       md: '1024px',
     },
+    colors: {
+      bg1: '#ECECE9',
+      gray: {
+        gray1: '#FEFEF1',
+        gray2: '#ECECE1',
+        gray3: '#DBDBCB',
+        gray4: '#CCCCCC',
+        gray5: '#A1A199',
+      },
+      red: '#FE1c5b',
+    },
     borderRadius: {
       1: '4px',
       2: '8px',
@@ -26,6 +37,7 @@ module.exports = {
     },
     inset: {
       0: '0px',
+      '1/2': '50%',
     },
     spacing: {
       px: '1px',
@@ -40,6 +52,8 @@ module.exports = {
       10: '40px',
       11: '44px',
       12: '48px',
+      '1/2': '50%',
+      full: '100%',
       'full-height': '100vh',
       'full-width': '100vw',
     },
