@@ -25,11 +25,30 @@ function Page() {
         </a>
       </div>
       <div className="absolute top-3/4 left-0 right-0">
-        <div className="border border-solid border-gray-gray5 rounded-1 block max-w-2/3 m-auto w-max px-6 py-2">
+        <div
+          className={clx(
+            'border border-solid shadow-lg rounded-1 block max-w-2/3 m-auto w-max px-6 py-2',
+            styles.textArea,
+          )}
+        >
           <p className="select-none">
             <span className="text-gray-gray1 text-2xl">小名叫棒棒</span>
-            <span className="text-gray-gray3 text-2xl">的写字间</span>
+            <span className="text-gray-gray3 text-xl ml-1">的写字间</span>
           </p>
+          <div className="flex flex-row justify-center text-gray-gray2">
+            <div className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all">
+              博客
+            </div>
+            <div className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all">
+              游记
+            </div>
+            <div className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all">
+              随笔
+            </div>
+            <div className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all">
+              关于作者
+            </div>
+          </div>
         </div>
       </div>
     </div>

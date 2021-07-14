@@ -26,6 +26,17 @@ module.exports = {
       6: '24px',
       full: '9999px',
     },
+    boxShadow: {
+      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+      md: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+      none: 'none',
+    },
+    opacity: {
+      0: '0%',
+      75: '75%',
+      100: '100%',
+    },
     maxWidth: {
       '1/2': '50%',
       '1/3': '33.33%',
@@ -61,7 +72,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      opacity: ['active'],
+    },
   },
   corePlugins: {
     // ...
