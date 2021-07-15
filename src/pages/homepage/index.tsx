@@ -1,4 +1,5 @@
 import React from 'react';
+import { history } from 'umi';
 import clx from 'classnames';
 import styles from './index.css';
 
@@ -20,14 +21,14 @@ function Page() {
         )}
       >
         <a
-          className="text-gray-gray2"
+          className="text-gray-gray2 select-none"
           href="https://beian.miit.gov.cn"
           target="_blank"
         >
           {'豫ICP备20011799号-1'}
         </a>
       </div>
-      <div className="absolute top-3/4 left-0 right-0">
+      <div className="absolute top-3/4 left-0 right-0 select-none">
         <div
           className={clx(
             'border border-solid shadow-lg rounded-1 block max-w-2/3 m-auto w-max px-6 py-2',
@@ -39,16 +40,28 @@ function Page() {
             <span className="text-gray-gray3 text-xl ml-1">的写字间</span>
           </p>
           <div className="flex flex-row justify-center text-gray-gray2">
-            <div className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all">
+            <div
+              onClick={() => history.push('/blog/tech')}
+              className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all"
+            >
               博客
             </div>
-            <div className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all">
+            <div
+              onClick={() => history.push('/blog/trip')}
+              className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all"
+            >
               游记
             </div>
-            <div className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all">
+            <div
+              onClick={() => history.push('/blog/other')}
+              className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all"
+            >
               随笔
             </div>
-            <div className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all">
+            <div
+              onClick={() => history.push('/about/me')}
+              className="mx-1 hover:text-gray-gray1 cursor-pointer active:opacity-75 opacity-100 transition-all"
+            >
               关于作者
             </div>
           </div>
