@@ -12,6 +12,9 @@ type DoRequestDTO = {
   };
 };
 
-export const example = async (req: DoRequestDTO) =>
-  request('/api/example', req);
-export const doLogin = async (req: DoRequestDTO) => request('/api/login', req);
+export const example = async (req: DoRequestDTO) => {
+  return request('/api/example', req);
+};
+export const doLogin = async (req: DoRequestDTO) => {
+  return request('/api/login', req);
+};
