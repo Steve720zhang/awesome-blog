@@ -9,6 +9,9 @@ module.exports = {
     colors: {
       bg1: '#ECECE9',
       white: '#FFF',
+      blue: {
+        info: '#4C84C4',
+      },
       gray: {
         gray1: '#FEFEF1',
         gray2: '#ECECE1',
@@ -79,6 +82,8 @@ module.exports = {
       10: '40px',
       11: '44px',
       12: '48px',
+      16: '64px',
+      18: '72px',
       '1/2': '50%',
       full: '100%',
       'full-height': '100vh',
