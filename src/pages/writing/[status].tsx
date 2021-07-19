@@ -5,9 +5,14 @@ import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import draftToHtml from 'draftjs-to-html';
 import classNames from 'classnames';
+import { doFuncWithThrottle } from '@/utils/timer';
+
+let throttleTimer: any = null;
+let dataCursor: { x: number; x1: number } | null = null;
 
 export default function Page() {
   const [folded, setFolded] = React.useState(false);
+  const [widthBanlencer, setWidthBanlencer] = React.useState(50);
   const [editorState, setEditorState] = React.useState<EditorState>();
 
   const onEditorStateChange = (editorState: EditorState) => {
@@ -26,17 +31,32 @@ export default function Page() {
     // document.addEventListener('')
   }, []);
 
-  function scaleMouseMove(e: Event) {
-    console.log('e:', e);
+  function scaleMouseMove(e: any) {
+    // console.log('e:', e);
+    if (!dataCursor || !dataCursor.x) {
+      return;
+    }
+    dataCursor.x1 = e.clientX;
+    console.log('dataCursor offset:', dataCursor.x - dataCursor.x1);
+    const cb = (xData: any) => {
+      console.log('cb :data:', xData);
+    };
+    doFuncWithThrottle(throttleTimer, cb, {
+      key: 'scale-writing',
+      x: dataCursor.x - dataCursor.x1,
+    });
   }
 
   function removeListener() {
+    dataCursor = null;
     window.removeEventListener('mousemove', scaleMouseMove);
     window.removeEventListener('mouseup', removeListener);
   }
 
   const onDrag = (e: any) => {
     console.log('onDrag:', e);
+    dataCursor = null;
+    dataCursor = { x: e.clientX, x1: e.clientX };
     window.addEventListener('mousemove', scaleMouseMove);
     window.addEventListener('mouseup', removeListener);
   };

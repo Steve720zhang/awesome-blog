@@ -14,7 +14,7 @@ export default function Page(props: any) {
         <div>小名叫棒棒</div>
         <div className="flex-1 flex justify-end flex-row">
           <Button
-            onClick={() => history.push('/writing')}
+            onClick={() => history.push('/writing/new')}
             className="ml-2 border-dark-2"
             type="default"
             size="small"
@@ -22,7 +22,7 @@ export default function Page(props: any) {
             写一写
           </Button>
           <Button
-            onClick={() => history.push('/writing')}
+            onClick={() => history.push('/writing/draft')}
             className="ml-2 border-dark-2"
             type="default"
             size="small"
