@@ -1,28 +1,27 @@
 function paramsClosure(params?: any) {
-  const memo: any = {};
+  let memo: any = {};
   function setParams(params: any) {
     memo[params.key] = params;
   }
   function getParams(key: string) {
     return memo[key];
   }
-  return { setParams, getParams };
+  function clearData() {
+    return (memo = {});
+  }
+  return { setParams, getParams, clearData };
 }
 const paramsClosureRes = paramsClosure();
-export const doFuncWithThrottle = (
-  timerObject: any,
-  cb: Function,
-  params: any,
-) => {
-  if (!timerObject) {
-    cb();
-    paramsClosureRes.setParams(params);
-    timerObject = setTimeout(() => {
-      cb(paramsClosureRes.getParams(params.key));
-      clearTimeout(timerObject);
-      timerObject = null;
-    }, 100);
-  } else {
-    paramsClosureRes.setParams(params);
+let timer: any = null;
+export const doFuncWithThrottle = (cb: Function, params: any) => {
+  if (!timer) {
+    timer = setTimeout(() => {
+      const gotParams = paramsClosureRes.getParams(params.key);
+      cb(gotParams);
+      clearTimeout(timer);
+      timer = null;
+      paramsClosureRes.clearData();
+    }, 300);
   }
+  paramsClosureRes.setParams(params);
 };

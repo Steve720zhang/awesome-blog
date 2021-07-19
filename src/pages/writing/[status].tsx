@@ -7,11 +7,12 @@ import draftToHtml from 'draftjs-to-html';
 import classNames from 'classnames';
 import { doFuncWithThrottle } from '@/utils/timer';
 
-let throttleTimer: any = null;
+// let throttleTimer: any = null;
 let dataCursor: { x: number; x1: number } | null = null;
 
 export default function Page() {
   const [folded, setFolded] = React.useState(false);
+  const throttleTimer = React.useRef<number | null>(null);
   const [widthBanlencer, setWidthBanlencer] = React.useState(50);
   const [editorState, setEditorState] = React.useState<EditorState>();
 
@@ -28,33 +29,34 @@ export default function Page() {
   }, [editorState]);
 
   React.useEffect(() => {
-    // document.addEventListener('')
+    setWidthBanlencer(window.innerWidth / 2);
   }, []);
 
-  function scaleMouseMove(e: any) {
-    // console.log('e:', e);
+  const scaleMouseMove = (e: any) => {
     if (!dataCursor || !dataCursor.x) {
       return;
     }
     dataCursor.x1 = e.clientX;
-    console.log('dataCursor offset:', dataCursor.x - dataCursor.x1);
     const cb = (xData: any) => {
-      console.log('cb :data:', xData);
+      // console.log('xData:', xData, '--------==',widthBanlencer)
+      const newXOffset = xData.x;
+      setWidthBanlencer(widthBanlencer + newXOffset);
     };
-    doFuncWithThrottle(throttleTimer, cb, {
+    doFuncWithThrottle(cb, {
       key: 'scale-writing',
       x: dataCursor.x - dataCursor.x1,
     });
-  }
+  };
 
-  function removeListener() {
+  const removeListener = () => {
     dataCursor = null;
     window.removeEventListener('mousemove', scaleMouseMove);
     window.removeEventListener('mouseup', removeListener);
-  }
+  };
 
   const onDrag = (e: any) => {
-    console.log('onDrag:', e);
+    // console.log('onDrag:', e);
+    // setWidthBanlencer(e.clientX)
     dataCursor = null;
     dataCursor = { x: e.clientX, x1: e.clientX };
     window.addEventListener('mousemove', scaleMouseMove);
@@ -62,13 +64,21 @@ export default function Page() {
   };
 
   const onKeyDownCapture = (e: any) => {
-    console.log('onKeyDownCapture:', e);
+    // console.log('onKeyDownCapture:', e);
     if (e.metaKey && e.key === 's') {
       e.stopPropagation();
       e.preventDefault();
       // do save in db
     }
   };
+
+  let rightScale = widthBanlencer / window.innerWidth;
+  // console.log('rightScale:', rightScale);
+  if (rightScale > 0.8) rightScale = 0.8;
+  if (rightScale < 0.2) rightScale = 0.2;
+  let leftScale = 1 - rightScale;
+  leftScale = leftScale * 100;
+  rightScale = rightScale * 100;
 
   return (
     <div className="w-full-width h-full-height flex flex-col items-stretch overflow-hidden">
@@ -95,14 +105,20 @@ export default function Page() {
         onKeyDownCapture={onKeyDownCapture}
         className="w-full px-6 flex flex-row items-stretch flex-1 pb-6 flex-shrink-0 flex-grow-1 overflow-hidden"
       >
-        <div className="w-auto bg-white shadow-md flex-1 rounded-1 hidden md:flex"></div>
+        <div
+          className="w-auto bg-white shadow-md flex-1 rounded-1 hidden md:flex"
+          style={{ maxWidth: `${leftScale}%` }}
+        ></div>
         <div
           onMouseDown={onDrag}
           id="cursor-of-id"
           className="px-px mx-1 w-px border-l border-r border-solid border-gray-gray4 hover:border-gray-gray5 self-stretch hidden md:flex my-4"
           style={{ cursor: 'col-resize' }}
         ></div>
-        <div className="w-auto bg-white shadow-md flex-1 rounded-1 overflow-hidden">
+        <div
+          className="w-auto bg-white shadow-md flex-1 rounded-1 overflow-hidden"
+          style={{ maxWidth: `${rightScale}%` }}
+        >
           <div className="border border-solid border-gray-gray1 p-2 bg-white m-1 rounded-1 h-full overflow-hidden">
             <Editor
               editorState={editorState}
