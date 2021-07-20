@@ -29,7 +29,7 @@ export default function Page() {
   }, [editorState]);
 
   React.useEffect(() => {
-    setWidthBanlencer(window.innerWidth / 2);
+    setWidthBanlencer((window.innerWidth - 48 - 12) / 2);
   }, []);
 
   const scaleMouseMove = (e: any) => {
@@ -72,7 +72,7 @@ export default function Page() {
     }
   };
 
-  let rightScale = widthBanlencer / window.innerWidth;
+  let rightScale = widthBanlencer / (window.innerWidth - 48 - 12);
   // console.log('rightScale:', rightScale);
   if (rightScale > 0.8) rightScale = 0.8;
   if (rightScale < 0.2) rightScale = 0.2;
