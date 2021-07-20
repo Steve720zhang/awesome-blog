@@ -18,3 +18,6 @@ export const example = async (req: DoRequestDTO) => {
 export const doLogin = async (req: DoRequestDTO) => {
   return request('/api/login', req);
 };
+export const getAllUser = async (req: DoRequestDTO) => {
+  return request('/api/user', req);
+};
