@@ -36,8 +36,10 @@ function Page() {
             styles.textArea,
           )}
         >
-          <p className="select-none">
-            <span className="text-gray-gray1 text-2xl">小名叫棒棒</span>
+          <p className="select-none text-center">
+            <span className="text-gray-gray1 text-2xl">
+              {getContants('username')}
+            </span>
             <span className="text-gray-gray3 text-xl ml-1">的写字间</span>
           </p>
           <div className="flex flex-row justify-center text-gray-gray2">

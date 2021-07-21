@@ -12,7 +12,7 @@ export default function Page(props: any) {
   return (
     <div className="">
       <div className="bg-white w-full h-12 border-b border-solid border-gray-gray3 shadow-md flex flex-row items-center px-4">
-        <div>小名叫棒棒</div>
+        <div>{getContants('username')}</div>
         <div className="flex-1 flex justify-end flex-row">
           <Button
             onClick={() => history.push('/writing/new')}
