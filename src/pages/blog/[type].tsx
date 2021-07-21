@@ -2,6 +2,7 @@ import React from 'react';
 import { history } from 'umi';
 import { Button } from 'antd';
 import styles from './index.less';
+import { getContants } from '@/utils/constant';
 
 export default function Page(props: any) {
   const type = props.match.params;
@@ -45,7 +46,7 @@ export default function Page(props: any) {
               href="https://beian.miit.gov.cn"
               target="_blank"
             >
-              {'豫ICP备20011799号-1'}
+              {getContants('ICP')}
             </a>
           </div>
         </div>

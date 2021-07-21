@@ -2,6 +2,7 @@ import React from 'react';
 import { history } from 'umi';
 import clx from 'classnames';
 import styles from './index.css';
+import { getContants } from '@/utils/constant';
 
 function Page() {
   // React.useEffect(() => {
@@ -25,7 +26,7 @@ function Page() {
           href="https://beian.miit.gov.cn"
           target="_blank"
         >
-          {'豫ICP备20011799号-1'}
+          {getContants('ICP')}
         </a>
       </div>
       <div className="absolute top-3/4 left-0 right-0 select-none">

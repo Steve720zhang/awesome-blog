@@ -20,3 +20,4 @@
 /.env.local
 
 .env.prd
+.constant.prd.json

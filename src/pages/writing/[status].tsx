@@ -6,6 +6,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import draftToHtml from 'draftjs-to-html';
 import classNames from 'classnames';
 import { doFuncWithThrottle } from '@/utils/timer';
+import { getContants } from '@/utils/constant';
 
 // let throttleTimer: any = null;
 let dataCursor: { x: number; x1: number } | null = null;
@@ -137,7 +138,7 @@ export default function Page() {
           href="https://beian.miit.gov.cn"
           target="_blank"
         >
-          {'豫ICP备20011799号-1'}
+          {getContants('ICP')}
         </a>
         <div className="flex-1" />
       </footer>
