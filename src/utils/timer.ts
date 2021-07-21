@@ -21,7 +21,7 @@ export const doFuncWithThrottle = (cb: Function, params: any) => {
       clearTimeout(timer);
       timer = null;
       paramsClosureRes.clearData();
-    }, 300);
+    }, 30);
   }
   paramsClosureRes.setParams(params);
 };

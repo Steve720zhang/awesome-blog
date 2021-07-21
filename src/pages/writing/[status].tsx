@@ -106,7 +106,7 @@ export default function Page() {
         className="w-full px-6 flex flex-row items-stretch flex-1 pb-6 flex-shrink-0 flex-grow-1 overflow-hidden"
       >
         <div
-          className="w-auto bg-white shadow-md flex-1 rounded-1 hidden md:flex"
+          className="w-auto bg-white shadow-md w-full rounded-1 hidden md:flex"
           style={{ maxWidth: `${leftScale}%` }}
         ></div>
         <div
@@ -115,10 +115,7 @@ export default function Page() {
           className="px-px mx-1 w-px border-l border-r border-solid border-gray-gray4 hover:border-gray-gray5 self-stretch hidden md:flex my-4"
           style={{ cursor: 'col-resize' }}
         ></div>
-        <div
-          className="w-auto bg-white shadow-md flex-1 rounded-1 overflow-hidden"
-          style={{ maxWidth: `${rightScale}%` }}
-        >
+        <div className="w-auto bg-white shadow-md flex-1 rounded-1 overflow-hidden">
           <div className="border border-solid border-gray-gray1 p-2 bg-white m-1 rounded-1 h-full overflow-hidden">
             <Editor
               editorState={editorState}
