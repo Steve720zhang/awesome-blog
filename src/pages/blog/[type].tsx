@@ -1,21 +1,31 @@
 import React from 'react';
-import { history } from 'umi';
-import { Button } from 'antd';
+import { history, connect } from 'umi';
+import { Button, Alert, message } from 'antd';
 import styles from './index.less';
 import { getContants } from '@/utils/constant';
+import { isEmpty } from '@/utils/utils';
 
-export default function Page(props: any) {
+function Page(props: { user: any; match: any }) {
+  const { user } = props;
   const type = props.match.params;
   React.useEffect(() => {
     console.log('props.match.params:', props.match.params);
   });
+
+  const requestToWriting = (param?: string) => {
+    if (isEmpty(user)) {
+      message.error('请先登录');
+    } else {
+      history.push(`/writing/${param}`);
+    }
+  };
   return (
     <div className="">
       <div className="bg-white w-full h-12 border-b border-solid border-gray-gray3 shadow-md flex flex-row items-center px-4">
         <div>{getContants('username')}</div>
         <div className="flex-1 flex justify-end flex-row">
           <Button
-            onClick={() => history.push('/writing/new')}
+            onClick={() => requestToWriting('new')}
             className="ml-2 border-dark-2"
             type="default"
             size="small"
@@ -23,7 +33,7 @@ export default function Page(props: any) {
             写一写
           </Button>
           <Button
-            onClick={() => history.push('/writing/draft')}
+            onClick={() => requestToWriting('draft')}
             className="ml-2 border-dark-2"
             type="default"
             size="small"
@@ -55,3 +65,8 @@ export default function Page(props: any) {
     </div>
   );
 }
+
+const mapStateToProps = ({ user }: { user: any }) => ({
+  user,
+});
+export default connect(mapStateToProps)(Page);
