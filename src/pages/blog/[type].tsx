@@ -1,13 +1,17 @@
 import React from 'react';
 import { history, connect } from 'umi';
-import { Button, Alert, message } from 'antd';
+import { Button, Modal, message } from 'antd';
 import styles from './index.less';
 import { getContants } from '@/utils/constant';
+import LoginModal from '@/components/LoginModal';
 import { isEmpty } from '@/utils/utils';
 
 function Page(props: { user: any; match: any }) {
   const { user } = props;
   const type = props.match.params;
+
+  const [showLogin, setShowLogin] = React.useState(false);
+
   React.useEffect(() => {
     console.log('props.match.params:', props.match.params);
   });
@@ -15,6 +19,7 @@ function Page(props: { user: any; match: any }) {
   const requestToWriting = (param?: string) => {
     if (isEmpty(user)) {
       message.error('请先登录');
+      setShowLogin(true);
     } else {
       history.push(`/writing/${param}`);
     }
@@ -62,6 +67,7 @@ function Page(props: { user: any; match: any }) {
         </div>
         <div className="flex-5 bg-white h-auto shadow-md flex-shrink-0 flex-none flex flex-col"></div>
       </div>
+      <LoginModal show={showLogin} />
     </div>
   );
 }
