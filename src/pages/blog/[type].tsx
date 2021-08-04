@@ -14,6 +14,8 @@ function Page(props: { user: any; match: any }) {
 
   React.useEffect(() => {
     console.log('props.match.params:', props.match.params);
+    console.log('props.match.params:', props);
+    console.log('props.match.params:', user);
   });
 
   const requestToWriting = (param?: string) => {
@@ -67,7 +69,7 @@ function Page(props: { user: any; match: any }) {
         </div>
         <div className="flex-5 bg-white h-auto shadow-md flex-shrink-0 flex-none flex flex-col"></div>
       </div>
-      <LoginModal show={showLogin} />
+      <LoginModal show={showLogin} onClose={() => setShowLogin(false)} />
     </div>
   );
 }

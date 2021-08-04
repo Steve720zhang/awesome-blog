@@ -1,4 +1,5 @@
-import { getAllUser } from '@/services/services';
+import { doLogin, getAllUser } from '@/services/services';
+import Cookies from 'js-cookie';
 import { Effect, ImmerReducer, Reducer, Subscription } from 'umi';
 
 export interface IndexModelState {
@@ -17,24 +18,26 @@ export interface IndexModelType {
   };
   subscriptions?: { setup: Subscription };
 }
-const orders: IndexModelType = {
-  state: {
-    user: {},
-  },
+const user: IndexModelType = {
+  state: {},
   effects: {
-    *doLogin(action: { type: string }, { call, put, select }: any) {
-      const allUser = yield call(getAllUser);
-      console.log('allUser:', allUser);
+    *doLogin(action: any, { call, put, select }: any) {
+      const allUser = yield call(doLogin, action.payload);
+      Cookies.set('token', allUser.data.accessToken);
+      yield put({
+        type: 'setUser',
+        payload: { username: action.payload.username },
+      });
     },
   },
   reducers: {
     clearUser() {
-      return { user: {} };
+      return {};
     },
-    setUser({ payload }: any) {
-      return { user: payload };
+    setUser(state: any, { payload }: any) {
+      return { ...payload };
     },
   },
 };
 
-export default orders;
+export default user;

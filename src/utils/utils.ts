@@ -1,12 +1,12 @@
 export const isEmpty = (target: any): boolean => {
   if (typeof target === 'object') {
     if (target instanceof Array) {
-      return !!target.length;
+      return !target.length;
     } else {
-      return !!Object.keys(target).length;
+      return !Object.keys(target).length;
     }
   } else {
-    return !!target;
+    return !target;
   }
 };
 

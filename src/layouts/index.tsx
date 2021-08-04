@@ -6,19 +6,19 @@ function Layout(props: any) {
   React.useEffect(() => {
     console.log('props:', props);
     const { user, dispatch } = props;
-    if (!user.id) {
-      if (Cookies.get('token') && Cookies.get('tokenHead')) {
-        dispatch({
-          type: 'user/doLogin',
-        });
-      }
-    }
+    // if (!user.id) {
+    //   if (Cookies.get('token') && Cookies.get('tokenHead')) {
+    // dispatch({
+    //   type: 'user/doLogin',
+    // });
+    //   }
+    // }
   }, []);
   return <div className="block bbbbb">{props.children}</div>;
 }
 
-const mapStateToProps = ({ user }: { user: any }) => ({
-  ...user,
+const mapStateToProps = (state: any) => ({
+  ...state,
 });
 
 export default connect(mapStateToProps)(Layout);
