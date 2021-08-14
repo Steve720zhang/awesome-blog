@@ -5,6 +5,7 @@ export default defineConfig({
     type: 'none',
   },
   hash: true,
+  publicPath: '/res/',
   fastRefresh: {},
   tailwindcss: {
     tailwindCssFilePath: '@/styles/tailwind.css',
