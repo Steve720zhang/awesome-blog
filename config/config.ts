@@ -4,6 +4,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  hash: true,
   fastRefresh: {},
   tailwindcss: {
     tailwindCssFilePath: '@/styles/tailwind.css',
