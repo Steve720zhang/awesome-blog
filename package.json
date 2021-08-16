@@ -1,48 +1,49 @@
 {
-  "private": true,
-  "scripts": {
-    "start": "umi dev",
-    "build": "umi build",
-    "postinstall": "umi generate tmp",
-    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
-    "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
-  },
-  "dependencies": {
-    "@ant-design/pro-layout": "^6.5.0",
-    "@umijs/preset-react": "1.x",
-    "antd": "^4.16.6",
-    "classnames": "^2.3.1",
-    "draft-js": "^0.11.7",
-    "draftjs-to-html": "^0.9.1",
-    "js-cookie": "^2.2.1",
-    "react-draft-wysiwyg": "^1.14.7",
-    "umi": "^3.4.25"
-  },
-  "devDependencies": {
-    "@types/draft-js": "^0.11.4",
-    "@types/js-cookie": "^2.2.7",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@umijs/test": "^3.4.25",
-    "lint-staged": "^10.0.7",
-    "prettier": "^2.2.0",
-    "qiniu": "^7.4.0",
-    "react": "17.x",
-    "react-dom": "17.x",
-    "typescript": "^4.1.2",
-    "umi-plugin-tailwindcss": "^3.0.4",
-    "yorkie": "^2.0.0"
-  }
+    "private": true,
+    "scripts": {
+        "start": "umi dev",
+        "build": "umi build",
+        "deploy": "tyarn && umi build && node qiniuCDNResourceUploader.js",
+        "postinstall": "umi generate tmp",
+        "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+        "test": "umi-test",
+        "test:coverage": "umi-test --coverage"
+    },
+    "gitHooks": {
+        "pre-commit": "lint-staged"
+    },
+    "lint-staged": {
+        "*.{js,jsx,less,md,json}": [
+            "prettier --write"
+        ],
+        "*.ts?(x)": [
+            "prettier --parser=typescript --write"
+        ]
+    },
+    "dependencies": {
+        "@ant-design/pro-layout": "^6.5.0",
+        "@umijs/preset-react": "1.x",
+        "antd": "^4.16.6",
+        "classnames": "^2.3.1",
+        "draft-js": "^0.11.7",
+        "draftjs-to-html": "^0.9.1",
+        "js-cookie": "^2.2.1",
+        "react-draft-wysiwyg": "^1.14.7",
+        "umi": "^3.4.25"
+    },
+    "devDependencies": {
+        "@types/draft-js": "^0.11.4",
+        "@types/js-cookie": "^2.2.7",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "@umijs/test": "^3.4.25",
+        "lint-staged": "^10.0.7",
+        "prettier": "^2.2.0",
+        "qiniu": "^7.4.0",
+        "react": "17.x",
+        "react-dom": "17.x",
+        "typescript": "^4.1.2",
+        "umi-plugin-tailwindcss": "^3.0.4",
+        "yorkie": "^2.0.0"
+    }
 }

@@ -1,4 +1,6 @@
 {
   "ICP": "备案信息",
-  "username": "博主"
+  "username": "博主",
+  "accessKey": "accessKey",
+  "secretKey": "secretKey"
 }
