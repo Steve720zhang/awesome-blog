@@ -1,15 +1,21 @@
-# umi project
+# Awesome Blog
+
+build your blog all by yourself.
+with low budget and learning fullstack smoothly.
 
 ## Getting Started
 
 Install dependencies,
 
+build and start deving:
 ```bash
-$ yarn
+$ yarn && yarn start
 ```
-
-Start the dev server,
-
+deploy project to server
 ```bash
-$ yarn start
+$ yarn && yarn build 
+```
+or cache static resources with qiuniu CDN 
+```bash
+$ yarn && yarn deploy
 ```
