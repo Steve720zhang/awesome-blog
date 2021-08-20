@@ -17,5 +17,5 @@ $ yarn && yarn build
 ```
 or cache static resources with qiuniu CDN 
 ```bash
-$ yarn && yarn deploy
+$ yarn deploy
 ```

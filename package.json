@@ -3,7 +3,8 @@
     "scripts": {
         "start": "umi dev",
         "build": "umi build",
-        "deploy": "tyarn && umi build && node qiniuCDNResourceUploader.js",
+        "deploy": "yarn && umi build && node qiniuCDNResourceUploader.js",
+        "deployT": "tyarn && umi build && node qiniuCDNResourceUploader.js",
         "postinstall": "umi generate tmp",
         "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
         "test": "umi-test",
