@@ -11,14 +11,19 @@ function Page(props: { user: any; match: any }) {
   const type = props.match.params;
 
   const [showLogin, setShowLogin] = React.useState(false);
+  const [lastRequestUrl, setLastRequestUrl] = React.useState<
+    string | undefined
+  >('');
 
-  React.useEffect(() => {
-    console.log('props.match.params:', props.match.params);
-    console.log('props.match.params:', props);
-    console.log('props.match.params:', user);
-  });
+  // React.useEffect(() => {
+  //   console.log('props.match.params:', props.match.params);
+  //   console.log('props.match.params:', props);
+  //   console.log('props.match.params:', user);
+  // });
 
   const requestToWriting = (param?: string) => {
+    console.log('requestToWriting:', param);
+    setLastRequestUrl(param);
     if (isEmpty(user)) {
       message.error('请先登录');
       setShowLogin(true);
@@ -69,7 +74,15 @@ function Page(props: { user: any; match: any }) {
         </div>
         <div className="flex-5 bg-white h-auto shadow-md flex-shrink-0 flex-none flex flex-col"></div>
       </div>
-      <LoginModal show={showLogin} onClose={() => setShowLogin(false)} />
+      <LoginModal
+        show={showLogin}
+        onClose={(goingOn = false) => {
+          setShowLogin(false);
+          if (goingOn) {
+            requestToWriting(lastRequestUrl);
+          }
+        }}
+      />
     </div>
   );
 }

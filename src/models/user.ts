@@ -1,4 +1,4 @@
-import { doLogin, getAllUser } from '@/services/services';
+import { doLogin, getAllUser, profile } from '@/services/services';
 import Cookies from 'js-cookie';
 import { Effect, ImmerReducer, Reducer, Subscription } from 'umi';
 
@@ -11,6 +11,7 @@ export interface IndexModelType {
   state?: IndexModelState;
   effects?: {
     doLogin: Effect;
+    doGetUser: Effect;
   };
   reducers?: {
     clearUser: Reducer<IndexModelState>;
@@ -24,10 +25,22 @@ const user: IndexModelType = {
     *doLogin(action: any, { call, put, select }: any) {
       const allUser = yield call(doLogin, action.payload);
       Cookies.set('token', allUser.data.accessToken);
+      Cookies.set('tokenHead', 'Bearer ');
       yield put({
         type: 'setUser',
         payload: { username: action.payload.username },
       });
+    },
+    *doGetUser(action: any, { call, put, select }: any) {
+      const currentUser = yield call(profile);
+      console.log(`currentUser: ${JSON.stringify(currentUser)}`);
+      // Cookies.set('token', allUser.data.accessToken);
+      if (currentUser.data) {
+        yield put({
+          type: 'setUser',
+          payload: currentUser.data,
+        });
+      }
     },
   },
   reducers: {

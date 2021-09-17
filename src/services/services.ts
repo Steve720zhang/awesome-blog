@@ -15,6 +15,9 @@ type DoRequestDTO = {
 export const example = async (req: DoRequestDTO) => {
   return request('/api/example', req);
 };
+export const profile = async (req: DoRequestDTO) => {
+  return request('/api/app/profile2', req);
+};
 export const doLogin = async (req: any) => {
   return request('/api/app/auth/login', {
     data: { username: req.username, password: req.password },

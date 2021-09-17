@@ -7,12 +7,13 @@ import { isEmpty } from '@/utils/utils';
 
 type T = {
   show: boolean;
+  user: any;
   onClose: Function;
   dispatch: Function;
 };
 
 function Component(props: T) {
-  const { show, onClose, dispatch } = props;
+  const { show, onClose, dispatch, user } = props;
   return (
     <>
       <Modal
@@ -31,6 +32,7 @@ function Component(props: T) {
             console.log('onFinishFailed:', data);
           }}
           onFinish={(data: any) => {
+            onClose();
             dispatch({ type: 'user/doLogin', payload: data });
             console.log('onFinish:', data);
           }}
